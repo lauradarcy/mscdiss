@@ -1,0 +1,20 @@
+\chapter{Approach}
+\begin{comment}
+\begin{itemize}
+\item mc
+\item mc with separate types then speed discarded
+\item q learning
+\item monte carlo etc
+\end{itemize}
+non markov - need ones dont use v
+\end{comment}
+
+The first part of the approach is to build environments with varying levels of complexity. The first environment, as discussed previously, only requires four basic actions: $+1, -1, \times2$ and $\div2$. The hidden function defining the dynamics of the environment will be a simple two step function, such as $x\times2+1$. This significantly lowers the required number of state-action pairs to be tested before converging to an optimal policy. This can therefore be used to ensure algorithms are implemented properly before moving on to more detailed environments. 
+
+The first algorithm implemented will be a Monte Carlo implementation, as seen in the background materials section. It is important to note that although this is technically a first visit implementation, in this environment no states are visited more than once per episode (recall that the states are the number of operations applied, so will always be $\mathscr{S}=1,2,3,...T$ where $T$ is the terminating state). 
+
+The Monte Carlo implementation was chosen for a multitude of reasons. Firstly, it is a well known, popular algorithm for episodic environments, with a simple theoretical basis to back it mathematically (by law of large numbers, any value will converge eventually to its true value after enough episodes). It is model free, meaning it does not depend on the dynamics of the environment to plan future actions, which is helpful as the non-Markov states for our environment cannot fully predict the future reward. In general, it is one of the algorithms that are least harmed by non-Markov states, in part because it doesn't make use of state value estimates \cite{Sutton:RLIntro115}. Within the `bias-variance tradeoff', Monte Carlo is considered to have no bias (as the values are estimated with actual returns), but a high level of variance, however as the basic environments are made with no noise this isn't a problem.
+
+The other algorithm implemented is Q-learning. Q-learning is an off policy form of temporal difference (TD) learning. Like the Monte Carlo method, Q-learning is a model-free, tabular method. Unlike Monte Carlo methods, TD methods use bootstrapping, which means TD methods update value functions based on the value functions of other states and actions. Also unlike Monte Carlo, Q-learning updates after every step of an episode, as opposed to only at the end of each episode. This can be particularly useful for extended episodes, where waiting for the terminating state would take too much time. Because the environment this project is testing has short episodes, which means updating after every step is unnecessary, and also has non-Markov states, which means bootstrapping will likely backfire, the benefits of Q-learning will be negligible and the disadvantages will be pronounced. Nonetheless, it is helpful to implement this algorithm to display how choice of algorithm can drastically effect the outcome, depending on the properties of the environment.
+
+Once these are implemented for the most basic environment, they will again be implemented for the environments with further complexity. in these environments, the values of each possible operation range from 1.0 to 5.0, discretised at varying values. This increases number of states significantly, and so will increase the learning time. Additionally, more complex functions will be tested, with multiple steps required, again to test the learning time.

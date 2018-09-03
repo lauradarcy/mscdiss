@@ -1,0 +1,18 @@
+\chapter{Aims and Objectives}
+\begin{comment}
+
+use RL to learn the most efficient workflow of a distributed system composed of separate services, whose actions are unknown. By using RL, no training set is required, and the correct workflow can be found through use.
+
+To model a distributed system an environment will be made that uses basic mathematical operators as components, there will be a 'correct workflow' e.g initial value $+3.5/2$, and the algorithms will test warious combinations of these services to get the desired results. 
+
+The objectives are to build these environments of different levels of detail, and implementing different algorithms to find these functions.
+\end{comment}
+The aim of this project is to use reinforcement learning to find the most efficient workflow of a distributed system. The distributed system is composed of separate services whose semantics are unknown. By using reinforcement learning, no training set is required, and the current workflow can be found through use. The simplest analogy to a distributed system is an environment where basic mathematical operators are the individual service components, and the `ideal workflow' is an arbitrary function that is hidden from the learning agent. Creating and solving this type of environment is the primary goal for this project.
+
+The first objective is to design and build a basic environment. The environment should have a small number of discrete states and actions. It should give a reward at each timestep depending on whether or not the `goal' is achieved. This basic environment is discussed further in the problem description section.
+
+The next objective is to implement a learning algorithm to find the workflow. The ideal algorithm depends on a number of characteristics of the environment itself, including whether states are discrete or continuous, whether or not the environment is episodic, and so on. The choice of algorithm also depends on the need for either an off-policy or on-policy solution, the need to balance accuracy over speed of solution, and so on. These details are explored in depth in the background materials section.
+
+The final objective is to add further complexity to the problem. This can be added in multiple different ways. The most obvious would be to increase the number of actions in the environment. Additional algorithms could be implemented, or noise could be added to each environment to slow the learning process. All of these depend on the time available at the end of the project.
+
+

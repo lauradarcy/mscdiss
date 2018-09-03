@@ -1,0 +1,27 @@
+\let\vect\vec
+
+\begin{SgAlgorithm}[h]
+    \SetKwInOut{Input}{input}
+    \SetKwInOut{Output}{Output}
+    \SetKwInOut{Return}{return}
+    \SetKwProg{Def}{def}{:}{end}
+    \SetKwIF{If}{ElseIf}{Else}{if}{:}{else if}{else:}{end}
+	\Def{\textnormal{step(action)}}{
+    	\Input{action}
+        \uIf{$\textnormal{action}=0$}{
+        $\textnormal{current\_value} += 1$}
+        \uElseIf{$\textnormal{action}=1$}{
+        $\textnormal{current\_value} -= 1$}
+        \uElseIf{$\textnormal{action}=2$}{
+        $\textnormal{current\_value} *= 2$}
+        \ElseIf{$\textnormal{action}=3$}{
+        $\textnormal{current\_value} /= 2$}
+        reward$=$0\\
+        episode\_complete$=$False\\
+        \If{$\textnormal{current\_value}==\textnormal{target}$}{   $\textnormal{reward}=1/\left(\textnormal{operation\_count}+1\right)$\\$\textnormal{episode\_complete}=\textnormal{True}$}
+        operation\_count$+=$1\\      \If{\textnormal{operation\_count}$\geq$\textnormal{operation\_limit}}{\textnormal{episode\_complete$=$\textnormal{True}}}
+        \Return{operation\_count, reward, episode\_complete}
+    }{}
+    \caption[Pseudocode for basic environment]{Pseudocode for the step function for the basic environment}
+    \label{algo:env1}
+\end{SgAlgorithm}
